@@ -60,16 +60,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.BubbleEverywhere = exports.HBarEverywhere = exports.BarEverywhere = exports.LineEverywhere = exports.DonutDoubleEverywhere = exports.DonutEverywhere = undefined;
+	exports.DescriptiveGPU = exports.DescriptiveCPU = exports.MultiScatterCPU = exports.RegressionGraDescGPU = exports.RegressionGraDescCPU = exports.RegressionLeastSqrCPU = exports.BarChart = exports.DonutChart = undefined;
 	
 	var _makeReacty = __webpack_require__(487);
 	
-	var DonutEverywhere = exports.DonutEverywhere = (0, _makeReacty.makeReacty)('donut-everywhere');
-	var DonutDoubleEverywhere = exports.DonutDoubleEverywhere = (0, _makeReacty.makeReacty)('donutdouble-everywhere');
-	var LineEverywhere = exports.LineEverywhere = (0, _makeReacty.makeReacty)('line-everywhere');
-	var BarEverywhere = exports.BarEverywhere = (0, _makeReacty.makeReacty)('bar-everywhere');
-	var HBarEverywhere = exports.HBarEverywhere = (0, _makeReacty.makeReacty)('hbar-everywhere');
-	var BubbleEverywhere = exports.BubbleEverywhere = (0, _makeReacty.makeReacty)('bubble-everywhere');
+	var DonutChart = exports.DonutChart = (0, _makeReacty.makeReacty)('estadistica-donut-chart');
+	//export const DonutDoubleEverywhere = makeReacty('donutdouble-everywhere');
+	//export const LineEverywhere = makeReacty('line-everywhere')
+	var BarChart = exports.BarChart = (0, _makeReacty.makeReacty)('estadistica-bar-chart');
+	//export const HBarEverywhere = makeReacty('hbar-everywhere');
+	//export const BubbleEverywhere = makeReacty('bubble-everywhere');
+	
+	var RegressionLeastSqrCPU = exports.RegressionLeastSqrCPU = (0, _makeReacty.makeReactyLit)('estadistica-regressionleastsqr-cpu');
+	var RegressionGraDescCPU = exports.RegressionGraDescCPU = (0, _makeReacty.makeReactyLit)("estadistica-regressiongradesc-cpu");
+	var RegressionGraDescGPU = exports.RegressionGraDescGPU = (0, _makeReacty.makeReactyLit)("estadistica-regressiongradesc-gpu");
+	
+	var MultiScatterCPU = exports.MultiScatterCPU = (0, _makeReacty.makeReactyLit)("estadistica-multiscatter-cpu");
+	
+	var DescriptiveCPU = exports.DescriptiveCPU = (0, _makeReacty.makeReactyLit)("estadistica-descriptive-cpu");
+	var DescriptiveGPU = exports.DescriptiveGPU = (0, _makeReacty.makeReactyLit)("estadistica-descriptive-gpu");
 
 /***/ },
 
@@ -3706,19 +3715,32 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.makeReacty = undefined;
+	exports.makeReactyLit = exports.makeReacty = undefined;
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	
 	//import val from '@skatejs/val';
 	
 	
 	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
 	
 	var _skatejsval = __webpack_require__(488);
 	
 	var _skatejsval2 = _interopRequireDefault(_skatejsval);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var h = (0, _skatejsval2.default)(_react.createElement);
 	
@@ -3783,6 +3805,228 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }*/
 	        return h(tagName, DaddyObj, props.children);
 	    };
+	};
+	
+	/*
+	import { createElement } from 'react';
+	//import val from '@skatejs/val';
+	import val from './skatejsval';
+	
+	const h = val(createElement);
+	
+	export const makeReacty = tagName => (props) => {
+	    let attrsObj = {}, funcObj = {}, objObj = {}, boolObj = {}, numberObj = {}, DaddyObj = {};
+	    let attrsKeys = [];
+	
+	    //change below array to collection of objects
+	    //Maybe do result[propname] = input
+	    //return result
+	
+	    const filterEvenReducer = (result, input, index) => {
+	        let attrsObj = {}, funcObj = {}, objObj = {}, boolObj = {}, numberObj = {}, DaddyObj = {};
+	        let events = {}
+	        if (typeof input === "string") {
+	            //attrsObj[attrsKeys[index]] = input;
+	            //const attrsevents = { attrs: attrsObj }
+	            //result.push(attrsevents)
+	            attrs[attrsKeys[index]] = input
+	            result['attrs'] = attrs
+	            return result
+	        } else if (typeof input === "number") {
+	            //numberObj[attrsKeys[index]] = input;
+	            //result.push(numberObj)
+	            result[attrsKeys[index]] = input
+	            return result
+	        } else if (typeof input === "function") {
+	            //funcObj[attrsKeys[index]] = input;
+	            //const objectevents = { events: funcObj }
+	            //result.push(objectevents)
+	            funcObj[attrsKeys[index]] = input
+	            result['events'] = funcObj
+	            return result
+	        } else if (typeof input === "object") {
+	            if (attrsKeys[index] !== 'children') {
+	                //objObj[attrsKeys[index]] = input;
+	                //result.push(objObj)
+	                result[attrsKeys[index]] = input
+	                return result
+	            } else {
+	                console.log('I am an object and children');
+	            }
+	        } else if (typeof input === "boolean") {
+	            //boolObj[attrsKeys[index]] = input;
+	            //result.push(boolObj)
+	            result[attrsKeys[index]] = input
+	            return result
+	        } else {
+	            console.log("type not found")
+	        }
+	        return result
+	    }
+	
+	    const reduceapproach = Object.values(props).reduce(filterEvenReducer, [])
+	    console.log(reduceapproach)
+	
+	    Object.keys(props).map((item) => {
+	        attrsKeys.push(item);
+	    })
+	    Object.values(props).forEach((item, index) => {
+	        let name;
+	        switch (typeof item) {
+	            case 'string':
+	                name = attrsKeys[index];
+	                attrsObj[name] = item;
+	                break;
+	            case 'number':
+	                name = attrsKeys[index];
+	                numberObj[name] = item;
+	                break;
+	            case 'function':
+	                name = attrsKeys[index];
+	                funcObj[name] = item;
+	                break;
+	            case 'object':
+	                if (attrsKeys[index] !== 'children') {
+	                    name = attrsKeys[index];
+	                    objObj[name] = item;
+	                } else {
+	                    console.log('I am an object and children');
+	                }
+	                break;
+	            case 'boolean':
+	                name = attrsKeys[index];
+	                boolObj[name] = item;
+	                break;
+	        }
+	
+	    })
+	    DaddyObj = Object.assign({ events: funcObj, attrs: attrsObj }, objObj, boolObj, numberObj);
+	
+	    /*
+	        let addRef;
+	        let Arraytest=[]
+	        if (typeof props.children==='object') {
+	            Object.values(props.children).forEach((item,index)=>{
+	                if (item.props.slot === undefined){
+	                    console.log("no slots detected")
+	                } else {
+	                    addRef =  Object.assign(item, { ref: e => (e)? e.setAttribute('slot', item.props.slot):''}); 
+	                }
+	                //finalChildren = Object.assign(finalChildren, addRef)
+	                Arraytest.push(addRef)
+	            })
+	        } else if (typeof props.children==='string') {
+	            Arraytest = props.children
+	        }
+	    return h(tagName, DaddyObj, props.children);
+	}
+	*/
+	
+	var makeReactyLit = exports.makeReactyLit = function makeReactyLit(tagName) {
+	    return function (_React$Component) {
+	        _inherits(_class, _React$Component);
+	
+	        function _class() {
+	            _classCallCheck(this, _class);
+	
+	            return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this));
+	        }
+	
+	        _createClass(_class, [{
+	            key: 'componentDidMount',
+	            value: function componentDidMount() {
+	                var _this2 = this;
+	
+	                console.log(this.props);
+	                var attrsKeys = [];
+	                Object.keys(this.props).map(function (item) {
+	                    attrsKeys.push(item);
+	                });
+	                Object.values(this.props).forEach(function (item, index) {
+	                    if (typeof item === "function") {
+	                        if (_this2.refElement) {
+	                            _this2.refElement.addEventListener(attrsKeys[index], item);
+	                            _this2.refElement.removeAttribute(attrsKeys[index]);
+	                        }
+	                    }
+	                    if ((typeof item === 'undefined' ? 'undefined' : _typeof(item)) === "object") {
+	                        if (attrsKeys[index] !== "children" && attrsKeys[index] !== "style") {
+	                            var toStringify = attrsKeys[index];
+	                            //Sets props. Straight up
+	                            Array.from(toStringify).forEach(function (element) {
+	                                //if (element === element.toUpperCase()) {
+	                                var propName = '' + attrsKeys[index];
+	                                _this2.refElement[propName] = item;
+	                                //}
+	                            });
+	                        }
+	                    }
+	                });
+	            }
+	        }, {
+	            key: 'componentWillUnmount',
+	            value: function componentWillUnmount() {
+	                var _this3 = this;
+	
+	                var attrsKeys = [];
+	                var refElement = this.refElement;
+	
+	                Object.keys(this.props).map(function (item) {
+	                    attrsKeys.push(item);
+	                });
+	                Object.values(this.props).forEach(function (item, index) {
+	                    if (typeof item === "function") {
+	                        if (refElement) {
+	                            _this3.refElement.removeEventListener(attrsKeys[index], item);
+	                        }
+	                    }
+	                });
+	            }
+	        }, {
+	            key: 'render',
+	            value: function render() {
+	                var _this4 = this;
+	
+	                console.log(this.props);
+	                var attrsKeys = [];
+	                Object.keys(this.props).map(function (item) {
+	                    attrsKeys.push(item);
+	                });
+	                var props = {};
+	                //let props = Object.assign({}, this.props)
+	                console.log(props);
+	                Object.values(this.props).forEach(function (item, index) {
+	                    if (typeof item === "boolean") {
+	                        if (item === false) {
+	                            var keyToRemove = attrsKeys[index];
+	                            delete props[keyToRemove];
+	                            // Quirk: when component sets its own boolean prop internally,
+	                            // react's prop is not triggering a render
+	                            // when component already init, set boolean prop along with removing the attribute.
+	                            if (_this4.refElement && _this4.refElement[keyToRemove] === true) _this4.refElement[keyToRemove] = false;
+	                        }
+	                    } else if ((typeof item === 'undefined' ? 'undefined' : _typeof(item)) === "object") {
+	                        if (attrsKeys[index] !== "children" && attrsKeys[index] !== "style") {
+	                            var toStringify = attrsKeys[index];
+	                            props[toStringify] = JSON.stringify(item);
+	                        } else {
+	                            // console.log('Reading Object and Children in React');
+	                        }
+	                    } else if (typeof item === "string" || typeof item === "number") {
+	                        var key = attrsKeys[index];
+	                        props[key] = item;
+	                    }
+	                });
+	                console.log(props);
+	                return _react2.default.createElement(tagName, _extends({}, props, { ref: function ref(_ref) {
+	                        _this4.refElement = _ref;
+	                    } }), this.props.children);
+	                //return React.createElement(tagName, {ref: (_ref) => { this.refElement = _ref; }}, this.props.children)   
+	            }
+	        }]);
+	
+	        return _class;
+	    }(_react2.default.Component);
 	};
 
 /***/ },
